@@ -8,24 +8,40 @@ import {
   Typography,
 } from '@material-ui/core';
 import LaunchIcon from '@material-ui/icons/Launch';
+import { InfoCard } from '@backstage/core-components';
 import { Link } from 'react-router-dom';
-import { useComponentCreatePermission } from '@openchoreo/backstage-plugin-react';
+import {
+  useComponentCreatePermission,
+  useProjectPermission,
+} from '@openchoreo/backstage-plugin-react';
 import { useStyles } from './styles';
 
 export const QuickActionsSection: React.FC = () => {
   const classes = useStyles();
   const { canCreate, loading: createPermLoading } =
     useComponentCreatePermission();
+  const { canCreate: canCreateProject, loading: projectPermLoading } =
+    useProjectPermission();
 
   const quickActions = [
     {
       title: 'Create Component',
       description: 'Start a new service',
-      link: '/create/templates/default/create-openchoreo-component',
+      link: '/create?view=components',
       disabled: !canCreate && !createPermLoading,
       tooltip:
         !canCreate && !createPermLoading
           ? 'You do not have permission to create a component'
+          : '',
+    },
+    {
+      title: 'Create Project',
+      description: 'Start a new project',
+      link: '/create?view=projects',
+      disabled: !canCreateProject && !projectPermLoading,
+      tooltip:
+        !canCreateProject && !projectPermLoading
+          ? 'You do not have permission to create a project'
           : '',
     },
     {
@@ -38,17 +54,11 @@ export const QuickActionsSection: React.FC = () => {
       description: 'View your components',
       link: '/catalog?filters[kind]=Component&filters[user]=owned',
     },
-    {
-      title: 'Browse Templates',
-      description: 'Available Golden Paths',
-      link: '/create',
-    },
   ];
 
   return (
-    <Box className={classes.overviewSection}>
-      <Typography variant="h3">Quick Actions</Typography>
-      <Grid container spacing={2} className={classes.quickActionsContainer}>
+    <InfoCard title="Quick Actions" className={classes.card}>
+      <Grid container spacing={2}>
         {quickActions.map((action, index) => (
           <Grid item xs={12} sm={6} md={6} key={index}>
             <Tooltip title={action.tooltip ?? ''}>
@@ -66,7 +76,7 @@ export const QuickActionsSection: React.FC = () => {
                   <CardContent className={classes.quickActionCardContent}>
                     <Box className={classes.quickActionHeader}>
                       <Typography
-                        variant="h5"
+                        variant="h6"
                         className={classes.quickActionTitle}
                       >
                         {action.title}
@@ -86,6 +96,6 @@ export const QuickActionsSection: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </InfoCard>
   );
 };
