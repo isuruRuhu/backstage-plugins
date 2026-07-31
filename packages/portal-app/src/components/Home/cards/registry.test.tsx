@@ -12,6 +12,7 @@ jest.mock('@backstage/plugin-search', () => ({
 }));
 jest.mock('@openchoreo/backstage-plugin', () => ({
   MyProjectsWidget: () => null,
+  OverviewWidget: () => null,
   QuickActionsSection: () => null,
 }));
 jest.mock('@openchoreo/backstage-plugin-react', () => ({

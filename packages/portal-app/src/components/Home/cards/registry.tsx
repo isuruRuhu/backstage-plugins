@@ -1,7 +1,7 @@
 import { HomePageStarredEntities } from '@backstage/plugin-home';
 import { HomePageSearchBar } from '@backstage/plugin-search';
 import {
-  MyProjectsWidget,
+  OverviewWidget,
   QuickActionsSection,
 } from '@openchoreo/backstage-plugin';
 import { useNamespacePermission } from '@openchoreo/backstage-plugin-react';
@@ -44,11 +44,12 @@ export const HOME_CARD_REGISTRY: Record<string, HomeCardDefinition> = {
     description: 'Search across the catalog, docs and APIs.',
     component: SearchCard,
   },
-  'my-projects': {
-    id: 'my-projects',
-    title: 'My Projects',
-    description: 'Workspace counts at a glance.',
-    component: MyProjectsWidget,
+  overview: {
+    id: 'overview',
+    title: 'Overview',
+    description:
+      'Workspace counts at a glance — projects, components, deployments, environments, APIs and resources.',
+    component: OverviewWidget,
   },
   'quick-actions': {
     id: 'quick-actions',

@@ -10,7 +10,7 @@ const choreoDefault: HomeCardConfig = {
   name: 'choreo-default',
   cards: [
     { cardId: 'search', size: { xs: 12 } },
-    { cardId: 'my-projects', size: { xs: 12, md: 6 } },
+    { cardId: 'overview', size: { xs: 12, md: 6 } },
     { cardId: 'quick-actions', size: { xs: 12, md: 6 } },
     { cardId: 'recent-deployments', size: { xs: 12 } },
     { cardId: 'starred-entities', size: { xs: 12, md: 6 } },

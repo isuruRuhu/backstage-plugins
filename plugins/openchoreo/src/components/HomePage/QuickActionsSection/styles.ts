@@ -1,16 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(theme => ({
-  overviewSection: {
-    marginBottom: theme.spacing(4),
-  },
-  quickActionsContainer: {
-    marginTop: theme.spacing(3),
+  card: {
+    height: '100%',
   },
   quickActionCard: {
     height: '100%',
     border: `1px solid ${theme.palette.divider}`,
     borderRadius: theme.spacing(1),
+    boxShadow: 'none',
     transition: 'all 0.2s ease-in-out',
     '&:hover': {
       borderColor: theme.palette.primary.main,
@@ -29,13 +27,13 @@ export const useStyles = makeStyles(theme => ({
   },
   quickActionCardContent: {
     width: '100%',
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
   },
   quickActionHeader: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(0.5),
   },
   quickActionTitle: {
     fontWeight: 600,
